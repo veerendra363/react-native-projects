@@ -1,14 +1,24 @@
 
 
 import { useState } from "react";
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
+import { Button, FlatList, Image, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
 
 export default function Goal() {
     const [enteredGoalText, setEnteredGoalText] = useState('');
     const [courseGoals, setCourseGoals] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false)
 
     function goalInputHandler(enteredText) {
-        setEnteredGoalText(enteredText, )
+        // for each key stoke we update the state variable with new value
+        setEnteredGoalText(enteredText)
+    }
+
+    function onAddNewModalClick() {
+        setIsModalVisible(true)
+    }
+
+    function onModalCancelClick() {
+        setIsModalVisible(false)
     }
 
     function addGoalHandler() {
@@ -22,17 +32,42 @@ export default function Goal() {
         */
 
         setCourseGoals( currGoals => [...currGoals, {text: enteredGoalText, key: Math.random().toString()}])
+
+        /*
+            After adding the goal to the list we are going to remove it from input box.
+            set enteredGoalText to empty and bind it with TextInput component using value prop.
+        */
+        setEnteredGoalText('')
+        onModalCancelClick()
+    }
+
+    function deleteGoalHandler(key) {
+        // if user clicks on any key we will get the key then we have to remove that key value form the list of goals
+        setCourseGoals(currGoals => currGoals.filter(goal => goal.key !== key))
+
+        // Issue, New: (focus issue)know if focus is out of the list of the goals then i first have to change the focus next i
+        // am able to delete it. we can solve it with diff ways but as now i am keeping it as it is. 
+
+
     }
 
     return (
         <View style={styles.goalsContainer}>
+            <Button title="Add New Goal" onPress={onAddNewModalClick}/>
+            <Modal visible={isModalVisible} animationType="fade">
             <View style={styles.inputContainer}>
+                <Image style={styles.image} source={require('../assets/Goal/goal.png')}/>
                 <TextInput 
                     style={styles.textInput} 
                     placeholder="Enter your goal"
-                    onChangeText={goalInputHandler}/>
-                <Button title='Add' onPress={addGoalHandler}/>
+                    onChangeText={goalInputHandler}
+                    value={enteredGoalText}/>
+                <View style={styles.buttonsGroup}>
+                    <View style={styles.button}><Button title='Add' onPress={addGoalHandler}/></View>
+                    <View style={styles.button}><Button title="cancel" onPress={onModalCancelClick} /></View>
+                </View>
             </View>
+            </Modal>
 
             {/*
                 As we have many goals so we need scrolling
@@ -58,14 +93,34 @@ export default function Goal() {
             </ScrollView> */}
 
             <FlatList data={courseGoals} renderItem={itemData => 
+            /*
+                Directly we cannot press the text.
+                So to making pressable we have to wrap it in the pressable component.
+                We will make it press with diff ways also but now i am going with pressable.
+
+                android_ripple adds styling to pressed item for only android 
+                we have style prop for styling both ios and android on press.
+                style prop takes object and function. the function which is passed to
+                style will automatically called by pressable component it will pass one argument to
+                the function which is an object but we directly destructure it and get the pressed attribute
+                value if the pressed is true we will apply the styling
+            */
+            
                 <View style={styles.goalViewItem}>
+                    <Pressable
+                        // android_ripple={{ color: 'gray'}}
+                        style={({pressed}) => pressed && styles.pressedStyles}
+                        onPress={deleteGoalHandler.bind(this, itemData.item.key)}>
                     <Text style={styles.goalItem}>{itemData.item.text}</Text>
+                    </Pressable>
                 </View>
             }>
 
             </FlatList>
 
             </View>
+
+
         </View>
     );
 }
@@ -79,9 +134,9 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
         marginBottom: 8
@@ -93,7 +148,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         width: '70%',
         padding: 8,
-        marginRight: 8
+        marginBottom: 16
     },
 
     listContainer: {
@@ -102,13 +157,31 @@ const styles = StyleSheet.create({
 
     goalViewItem: {
         margin: 8,
-        padding: 8,
         borderRadius: 6,
         backgroundColor: 'orange'
     },
 
     goalItem: {
-       color: 'white' 
+       color: 'white',
+       padding: 8,
+    },
+
+    pressedStyles: {
+        opacity: 0.5
+    },
+
+    buttonsGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+
+    button: {
+        marginHorizontal: 16
+    },
+    image: {
+        width:100,
+        height: 100,
+        margin: 8
     }
 
 

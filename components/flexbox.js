@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
     /*
+      New:
       direction: row, 
         main axis:  l to r, cross axis: t to b
       direction: row-reverse, 
