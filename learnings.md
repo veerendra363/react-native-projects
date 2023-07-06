@@ -1,0 +1,11 @@
+## My Learnings
+- Creating custom buttons and reusable components
+- Basic styling and layout design
+- Adding Gradient colors using expo linear gradient
+- Image Background
+- **How to add eslint and prettier and resolve conflicts between them**
+- Adding alerts
+- Managing properties like color Globally
+- Adding icons and custom font styles
+- Passing styles to custom components
+- Navigating between the screens
