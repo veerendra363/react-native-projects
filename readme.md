@@ -9,6 +9,8 @@ I just started learning the react native and this is my first repo of react nati
     - Hello world app
     - Flex box app
     - Goal or todo app
+- guess-my-number
+    - Guess the number app
 
 
 
@@ -41,6 +43,10 @@ Here I learnt about flex box styling.
 ### Goal / ToDo
 This is used to read, display and delete the goal.
 In this i leant taking input from user, state management, scroll views, modals, images. 
+
+### Guess the number app
+This is a small game application where the user enters a number between 1 and 99. The app then randomly generates a number within that range and starts guessing the number. After each guess, the user tells the app whether the guessed number was too high, too low, or correct. The app then narrows its range of guesses based on the user's input. The game ends when the app correctly guesses the number.  
+In this i leant newly navigating between screen using if else, adding alert messages, creating custom components, and passing props between components and updating the parent state variables using function (this all react things only).
 
 
 
