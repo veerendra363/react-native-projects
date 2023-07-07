@@ -5,6 +5,7 @@ import { useState } from "react"
 import GameScreen from "./screens/GameScreen"
 import GameOverScreen from "./screens/GameOverScreen"
 import StartGameScreen from "./screens/StartGameScreen"
+import { StatusBar } from "expo-status-bar"
 
 export default function App() {
   // userNumber stores the user entered number.
@@ -88,22 +89,26 @@ export default function App() {
 
   return (
     /*
+      - StatusBar is expo component. By using this we can style the status bar of the device.
       - LinearGradient is expo component which helps color gradients.
       - ImageBackground is react native component which is used to add back ground image.
         In native we use require function to give image path.
       - SafeAreaView is react native component which is used to give some space at the top according to phone.
         If phone as camera into the screen then it will give space accordingly.
     */
-    <LinearGradient colors={["#4e0329", "#ddb52f"]} style={{ flex: 1 }}>
-      <ImageBackground
-        source={require("./assets/images/dice.jpeg")}
-        resizeMode="cover"
-        style={styles.rootScreen}
-        imageStyle={styles.backGroundImage}
-      >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+    <>
+    <StatusBar style='light'/>
+      <LinearGradient colors={["#4e0329", "#ddb52f"]} style={{ flex: 1 }}>
+        <ImageBackground
+          source={require("./assets/images/dice.jpeg")}
+          resizeMode="cover"
+          style={styles.rootScreen}
+          imageStyle={styles.backGroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+      </>
   )
 }
 

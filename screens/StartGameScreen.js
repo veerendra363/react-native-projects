@@ -4,7 +4,17 @@
   If user Enters the valid number then he/she will be moved to the game screen where they
   play actual game with the app.
 */
-import { Alert, StyleSheet, Text, TextInput, View } from "react-native"
+import {
+  Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  useWindowDimensions,
+  Platform
+} from "react-native"
 import PrimaryButton from "../components/ui/PrimaryButton"
 import { useState } from "react"
 import Title from "../components/ui/Title"
@@ -12,15 +22,18 @@ import { colors } from "../utils/colors"
 import Card from "../components/ui/Card"
 import InstructionText from "../components/ui/InstructionText"
 
-function StartGameScreen({onPickNumber}) {
+function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("")
+
+  // it is used to get the dimensions of the device
+  const { width, height } = useWindowDimensions()
 
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText)
   }
 
   function resetInputHandler() {
-    setEnteredNumber('')
+    setEnteredNumber("")
   }
 
   function confirmInputHandler() {
@@ -32,6 +45,15 @@ function StartGameScreen({onPickNumber}) {
         only object it is breaking the application in android instead of creating alert message then 
         after some google searches i found that we have to add that object in an array. finally this solution is
         working in both ios and android.
+
+        New: Here we are using the useWindowDimensions hook to get dynamic dimensions of the device. use this
+        we can adjust the screen according to orientation changes (landscape, portrait.. )
+
+        New + Issue: In android  we get collapsable keyboard where in case of ios we can't collapse the keyboard
+        It will occupy the screen and user can't able to see the screen. To solve this react native provides KeyboardAvoidingView
+        Component with this we can collapse the keyboard. We have wrap the code in this component. It will move our screen to above
+        and in bottom we get keyboard where our actually screen go out the device. To make it visible use scroll view then we can 
+        scroll between the our screen and keyboard or if we click any where on the screen it will collapse the screen.
        */
       Alert.alert(
         "Invalid number!",
@@ -43,28 +65,36 @@ function StartGameScreen({onPickNumber}) {
     onPickNumber(enteredNumber)
   }
 
+  const marginTop = height < 400 ? 32 : 100
+
   return (
-    <View style={styles.rootContainer}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <InstructionText>Enter a number</InstructionText>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          value={enteredNumber}
-          onChangeText={numberInputHandler}
-        />
-        <View style={styles.buttonsContainer}>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-          </View>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-          </View>
+    <ScrollView style={{ flex: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
+        <View style={[styles.rootContainer, { marginTop }]}>
+          <Title>Guess My Number</Title>
+          <Card>
+            <InstructionText>Enter a number</InstructionText>
+            <TextInput
+              style={styles.numberInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              value={enteredNumber}
+              onChangeText={numberInputHandler}
+            />
+            <View style={styles.buttonsContainer}>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={confirmInputHandler}>
+                  Confirm
+                </PrimaryButton>
+              </View>
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   )
 }
 
@@ -74,7 +104,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     marginTop: 100,
-    alignItems: 'center'
+    alignItems: "center",
   },
 
   numberInput: {

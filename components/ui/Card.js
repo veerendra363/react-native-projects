@@ -4,7 +4,7 @@
     - in android we use elevation style attribute
     - in ios we use shadowColor, shadowOffset, shadowRadius, ShadowOpacity style attribute
 */
-import { StyleSheet, View } from "react-native"
+import { Dimensions, StyleSheet, View } from "react-native"
 
 function Card({ children }) {
   return <View style={styles.cardStyles}>{children}</View>
@@ -12,10 +12,12 @@ function Card({ children }) {
 
 export default Card
 
+const deviceWidth = Dimensions.get('window').width
+
 const styles = StyleSheet.create({
   cardStyles: {
     alignItems: "center",
-    marginTop: 36,
+    marginTop: deviceWidth < 400 ? 18 : 36,
     padding: 16,
     backgroundColor: "#4e0329",
     marginHorizontal: 24,
