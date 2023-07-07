@@ -29,24 +29,28 @@ I just started learning the react native and this is my first repo of react nati
 ## APPs
 
 ### Basic Hello world 
-I just added the my first hello world component.  
+- I just added the my first hello world component.  
 This component just displays the Hello world text with some styling.
-I used `View` component to group the component, with in the `View` component i wrapped the `Text` component which displays our text on the screen and applied some basic stylings.  
-It is just a static app.
-I just getting started with native and learnt about the some basic components of react native and how to run the app in mobile and emulator.
+- I used `View` component to group the component, with in the `View` component i wrapped the `Text` component which displays our text on the screen and applied some basic stylings.  
+- It is just a static app.
+- I just getting started with native and learnt about the some basic components of react native and how to run the app in mobile and emulator.
 
 ### FlexBox
-This app holds three boxes and with some styling.
-I used this to learn about the flex box styling and i just played with boxes using the flex box layout.
-Here I learnt about flex box styling.
+- This app holds three boxes and with some styling.
+- I used this to learn about the flex box styling and i just played with boxes using the flex box layout.
+- Here I learnt about flex box styling.
 
 ### Goal / ToDo
-This is used to read, display and delete the goal.
-In this i leant taking input from user, state management, scroll views, modals, images. 
+- This is used to read, display and delete the goal.
+- In this i leant taking input from user, state management, scroll views, modals, images. 
 
 ### Guess the number app
-This is a small game application where the user enters a number between 1 and 99. The app then randomly generates a number within that range and starts guessing the number. After each guess, the user tells the app whether the guessed number was too high, too low, or correct. The app then narrows its range of guesses based on the user's input. The game ends when the app correctly guesses the number.  
-In this i leant newly navigating between screen using if else, adding alert messages, creating custom components, and passing props between components and updating the parent state variables using function (this all react things only).
+
+- This is a small game application where the user enters a number between 1 and 99. The app then randomly generates a number within that range and starts guessing the number. After each guess, the user tells the app whether the guessed number was too high, too low, or correct. The app then narrows its range of guesses based on the user's input. The game ends when the app correctly guesses the number.  
+
+- In this i leant newly basic navigating between screen using if else, adding alert messages, creating custom components, and passing props between components and updating the parent state variables using function (this all react things only).
+
+- Learnt building adaptive user interfaces
 
 
 
