@@ -6,3 +6,4 @@
     - tab ....
 - How send data with navigation and styling the navigation components
 - Nested navigation
+- App level state management using redux and react context.
