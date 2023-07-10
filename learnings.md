@@ -1,17 +1,16 @@
-# Debugging
-- Read the error message and using the stack where the error is occurred.
-- Use console logs 
-- We can use debugger tools or react debugger tools to debug it.
-- In react dev tools we can change the values of the state and we can test diff ways using that tool.
-- Learn from the docs.
+## User input
+- Creating custom input felid
+- Reading data from user
+- Storing data in effective way
+- Form Creation and handling form submissions and cancels
+- Validating user input
+- Giving validation feedback to user on each key stoke and on submit
 
-# Stylings
-- styles not be inherited like css. Every element is stand alone.
-- some stylings may not be applied for both android and ios. so have to some extra work to fix that
-
-# Common Features
-- splitting the components.
-- passing props to components.
-- managing the states.
-- we will connect with parent component using the event handler functions passing to child.
-  
+## Sending HTTP Requests
+- Creating dummy database in firebase
+- How use axios package
+- Sending POST, PUT, GET, DELETE requests using axios to firebase
+- Storing fetched data in global state
+- Adding loading effect which request is in progress
+    - New: Here we used react native ActivityIndicator component which display default platform native loading to user.
+- Handling request errors

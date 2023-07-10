@@ -1,58 +1,21 @@
-# First React Native APP
-I just started learning the react native and this is my first repo of react native where it contains the different branches. Each brach holds diff apps where i learnt from the course. open the respective branches to know more about the apps.
-
-[click here](https://www.udemy.com/course/react-native-the-practical-guide) to view the course i used to learn the react native
-
-> Note: For Quick revision going through all readMe, learnings files in the each branch and if u any particular file search for the keywords like Issue, New then read the comment.
-
-- main branch
-    - Hello world app
-    - Flex box app
-    - Goal or todo app
-- guess-my-number
-    - Guess the number app
+# Expense Tracker App
+This is a simple expense tracker app built with React Native. It allows users to track their daily expenses and manage their spending. The app utilizes Firebase as the backend to store and retrieve expense data.
+![expense-tracker_AdobeExpress](https://github.com/veerendra363/react-native-projects/assets/83916434/8f881032-b7a6-473b-a897-8f8398362d5c)
 
 
 
-## Getting started
-- we must have idea on react before starting the react native.
-- react native is used to develop the android and ios apps in one go.
-- react native converts the code ui code from js to native platform code and js logic will be run using js thread which was hosted by react native(in the app)
-- we can use expo cli and reactive native cli for development. we will use expo cli because its easy and fast.
-- if we have react and node already installed in our machine then just run the `npx create-expo-app AwesomeProject` which will create the react native project.
-- by using expo we can run the app in our phone or simulators(android studio and xcode)
-- run the app using `npm start`
-  - just install expo go app in our phone and scan the QR from expo go app.
-  - open android or ios simulator and press a to run android app or press i to run ios app.
+## Features
+- View the last 7 days expenses on the home screen.
+- Add a new expense by clicking the "+" button.
+- Two tabs for navigation: "Recent" and "All Expenses".
+- In the "Recent" tab, users can see a list recent expenses.
+- In the "All Expenses" tab, users can view a list of all expenses with details such as description, amount, and date.
+- Edit or delete expenses from the expense list.
 
-
-## APPs
-
-### Basic Hello world 
-- I just added the my first hello world component.  
-This component just displays the Hello world text with some styling.
-- I used `View` component to group the component, with in the `View` component i wrapped the `Text` component which displays our text on the screen and applied some basic stylings.  
-- It is just a static app.
-- I just getting started with native and learnt about the some basic components of react native and how to run the app in mobile and emulator.
-
-### FlexBox
-- This app holds three boxes and with some styling.
-- I used this to learn about the flex box styling and i just played with boxes using the flex box layout.
-- Here I learnt about flex box styling.
-
-### Goal / ToDo
-- This is used to read, display and delete the goal.
-- In this i leant taking input from user, state management, scroll views, modals, images. 
-
-### Guess the number app
-
-- This is a small game application where the user enters a number between 1 and 99. The app then randomly generates a number within that range and starts guessing the number. After each guess, the user tells the app whether the guessed number was too high, too low, or correct. The app then narrows its range of guesses based on the user's input. The game ends when the app correctly guesses the number.  
-
-- In this i leant newly basic navigating between screen using if else, adding alert messages, creating custom components, and passing props between components and updating the parent state variables using function (this all react things only).
-
-- Learnt building adaptive user interfaces
-
-
-
-
-
+## ScreenShots
+<div align="center">
+  <img src="https://github.com/veerendra363/react-native-projects/assets/83916434/d0da7a10-5df0-46a6-ad22-5ab3b4628b94" alt="Opening App" height="200" width="100">
+  <img src="https://github.com/veerendra363/react-native-projects/assets/83916434/bc4dcb53-9fd8-4295-a092-d5bfcdd1c122" alt="Expense Form" height="200" width="100">
+  <img src="https://github.com/veerendra363/react-native-projects/assets/83916434/116f7df7-6af3-4f95-bfc0-19a5c1ce5c20" alt="All Expenses" height="200" width="100">
+  <img src="https://github.com/veerendra363/react-native-projects/assets/83916434/d4114315-b3da-4566-9b15-d01136ac0f83" alt="Expense Update Form" height="200" width="100">
+</div>
