@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native"
-import { Image, Pressable, StyleSheet, Text, View } from "react-native"
+import { Image, Platform, Pressable, StyleSheet, Text, View } from "react-native"
 import MealBasicDetails from "./MealBasicDetails"
 
 function MealItem({
