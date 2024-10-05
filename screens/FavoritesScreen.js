@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { FavoritesContext } from '../store/context/favorites-context';
 import { MEALS } from '../data/dummy-data';
 import MealsList from '../components/MealsList';
-
+// new changes
 function FavoritesScreen() {
   const favMealsCtx = useContext(FavoritesContext)
 
